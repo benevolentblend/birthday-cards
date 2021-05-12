@@ -1,13 +1,91 @@
 .wrapper {
+    --mail-width: 300px;
+    --mail-height: 200px;
+
+    --mail-width-half: calc(var(--mail-width) / 2);
+    --mail-height-half: calc(var(--mail-height) / 2);
+}
+
+.wrapper {
     display: grid;
     place-items: center;
     height: 100%;
 }
 
-.container {
-    width: 300px;
-    height: 170px;
-    border: 1px solid #111;
-    border-radius: 0.5em;
-    background-color: #f1f1f1;
+.mail {
+    width: var(--mail-width);
+    height: var(--mail-height);
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background: #ff8789;
+    position: relative;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.mail::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: var(--mail-width-half) solid transparent; /* half of the width */
+    border-right: var(--mail-width-half) solid #ff393c; /* half of the width */
+    border-top: var(--mail-height-half) solid transparent; /* half of the height */
+    border-bottom: var(--mail-height-half) solid #ff393c; /* half of the height */
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    z-index: 4;
+}
+
+.mail::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: var(--mail-width-half) solid #ff5355; /* half of the width */
+    border-right: var(--mail-width-half) solid transparent; /* half of the width */
+    border-top: var(--mail-height-half) solid transparent; /* half of the height */
+    border-bottom: var(--mail-height-half) solid #ff393c; /* half of the height */
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    z-index: 5;
+}
+
+.cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: var(--mail-width-half) solid transparent;
+    border-right: var(--mail-width-half) solid transparent; /* half of the width */
+    border-top: var(--mail-height-half) solid #ff8789; /* half of the height */
+    border-bottom: var(--mail-height-half) solid transparent; /* half of the height */
+    z-index: 6;
+    transform-origin: top;
+    transform: rotateX(0deg);
+    transition: all 0.5s 0.5s ease;
+    
+}
+
+.mailOpen .cover::before {
+    transform: rotateX(180deg);
+    transition: all 0.5s ease;
+}
+
+.letter {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 10px;
+    background: #dedede;
+    width: 280px;
+    height: 180px;
+    border-radius: 20px;
+    transform: translate(0, 0);
+    transition: all 0.5s ease;
+}
+
+.mailOpen .letter {
+    transform: translate(0, -50px);
+    transition: all 0.5s 0.5s ease;
 }
