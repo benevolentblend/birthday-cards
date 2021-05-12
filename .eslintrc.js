@@ -37,6 +37,11 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".jsx"] }],
+    "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
+    "react/jsx-max-props-per-line": [
+      "error",
+      { maximum: 1, when: "multiline" },
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
