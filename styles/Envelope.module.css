@@ -1,22 +1,22 @@
 .wrapper {
-    --mail-width: 300px;
-    --mail-height: 200px;
+    --envolope-width: 300px;
+    --envolope-height: 200px;
+    --envolope-rounded-border: 0.5em;
 
-    --mail-width-half: calc(var(--mail-width) / 2);
-    --mail-height-half: calc(var(--mail-height) / 2);
-}
+    --envolope-width-half: calc(var(--envolope-width) / 2);
+    --envolope-height-half: calc(var(--envolope-height) / 2);
 
-.wrapper {
-    display: grid;
-    place-items: center;
-    height: 100%;
+    --letter-rounded-border: 0.5em;
+
+
+    position: relative;
 }
 
 .mail {
-    width: var(--mail-width);
-    height: var(--mail-height);
-    border-bottom-left-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
+    width: var(--envolope-width);
+    height: var(--envolope-height);
+    border-bottom-left-radius: var(--envolope-rounded-border);
+    border-bottom-right-radius: var(--envolope-rounded-border);
     background: #ff8789;
     position: relative;
     transform-style: preserve-3d;
@@ -28,10 +28,10 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    border-left: var(--mail-width-half) solid transparent; /* half of the width */
-    border-right: var(--mail-width-half) solid #ff393c; /* half of the width */
-    border-top: var(--mail-height-half) solid transparent; /* half of the height */
-    border-bottom: var(--mail-height-half) solid #ff393c; /* half of the height */
+    border-left: var(--envolope-width-half) solid transparent; /* half of the width */
+    border-right: var(--envolope-width-half) solid #ff393c; /* half of the width */
+    border-top: var(--envolope-height-half) solid transparent; /* half of the height */
+    border-bottom: var(--envolope-height-half) solid #ff393c; /* half of the height */
     border-bottom-left-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
     z-index: 4;
@@ -42,10 +42,10 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    border-left: var(--mail-width-half) solid #ff5355; /* half of the width */
-    border-right: var(--mail-width-half) solid transparent; /* half of the width */
-    border-top: var(--mail-height-half) solid transparent; /* half of the height */
-    border-bottom: var(--mail-height-half) solid #ff393c; /* half of the height */
+    border-left: var(--envolope-width-half) solid #ff5355; /* half of the width */
+    border-right: var(--envolope-width-half) solid transparent; /* half of the width */
+    border-top: var(--envolope-height-half) solid transparent; /* half of the height */
+    border-bottom: var(--envolope-height-half) solid #ff393c; /* half of the height */
     border-bottom-left-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
     z-index: 5;
@@ -56,10 +56,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    border-left: var(--mail-width-half) solid transparent;
-    border-right: var(--mail-width-half) solid transparent; /* half of the width */
-    border-top: var(--mail-height-half) solid #ff8789; /* half of the height */
-    border-bottom: var(--mail-height-half) solid transparent; /* half of the height */
+    border-left: var(--envolope-width-half) solid transparent;
+    border-right: var(--envolope-width-half) solid transparent; /* half of the width */
+    border-top: var(--envolope-height-half) solid #ff8789; /* half of the height */
+    border-bottom: var(--envolope-height-half) solid transparent; /* half of the height */
     z-index: 6;
     transform-origin: top;
     transform: rotateX(0deg);
@@ -80,9 +80,10 @@
     background: #dedede;
     width: 280px;
     height: 180px;
-    border-radius: 20px;
+    border-radius: var(--letter-rounded-border);
     transform: translate(0, 0);
     transition: all 0.5s ease;
+    padding: 1em;
 }
 
 .mailOpen .letter {
