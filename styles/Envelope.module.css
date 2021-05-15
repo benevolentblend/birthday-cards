@@ -72,20 +72,6 @@
     transition: all 0.5s ease;
 }
 
-.letter {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 10px;
-    background: #dedede;
-    width: 280px;
-    height: 180px;
-    border-radius: var(--letter-rounded-border);
-    transform: translate(0, 0);
-    transition: all 0.5s ease;
-    padding: 1em;
-}
-
 .mailOpen .letter {
     transform: translate(0, -50px);
     transition: all 0.5s 0.5s ease;
