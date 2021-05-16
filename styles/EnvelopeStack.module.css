@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    padding: 2rem;
+}
+
+.item {
+    position: relative;
+    z-index: 1;
+    border-radius: 16px;
+    box-shadow: -1rem 0 2rem #000; 
+    transition: .2s;
+}
+
+.item:hover {
+    transform: translateY(-2rem);
+}
+
+.item:hover~.item {
+    transform: translateX(4rem);
+}
+
+.item:not(:first-child) {
+    margin-left: -4rem;
+}
