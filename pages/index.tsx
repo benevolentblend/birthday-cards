@@ -17,8 +17,6 @@ export default function Home() {
 
   return (
     <div style={{
-      display: "grid",
-      placeItems: "center",
       height: "100%",
     }}
     >

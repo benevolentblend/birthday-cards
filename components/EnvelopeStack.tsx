@@ -2,6 +2,7 @@ import {
   CSSProperties, Dispatch, FC, SetStateAction, useState,
 } from "react";
 import { FixedSizeList } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
 import Envelope from "../models/Envelope";
 import EnvelopeView from "./EnvelopeView";
 import styles from "../styles/EnvelopeStack.module.css";
@@ -62,27 +63,29 @@ const EnvelopeStack:FC<Props> = ({ envelopes }: Props) => {
   const [activeEnvelope, setActiveEnvelope] = useState(-1);
 
   return (
-    <div>
-      <FixedSizeList {...{
-        height: 500,
-        itemCount: envelopes.length,
-        layout: "horizontal",
-        itemSize: 250,
-        width: 700,
-        className: activeEnvelope === -1 ? styles.scrollableList : styles.fixedList,
-        style: {
-          overflowX: activeEnvelope === -1 ? "scroll" : "hidden",
-        },
-        itemData: {
-          envelopes,
-          activeEnvelope,
-          setActiveEnvelope,
-        },
-      }}
-      >
-        {EnvelopeItem}
-      </FixedSizeList>
-    </div>
+    <AutoSizer>
+      {({ height, width }) => (
+        <FixedSizeList {...{
+          height,
+          itemCount: envelopes.length,
+          layout: "horizontal",
+          itemSize: 250,
+          width,
+          className: activeEnvelope === -1 ? styles.scrollableList : styles.fixedList,
+          style: {
+            overflowX: activeEnvelope === -1 ? "scroll" : "hidden",
+          },
+          itemData: {
+            envelopes,
+            activeEnvelope,
+            setActiveEnvelope,
+          },
+        }}
+        >
+          {EnvelopeItem}
+        </FixedSizeList>
+      )}
+    </AutoSizer>
   );
 };
 
