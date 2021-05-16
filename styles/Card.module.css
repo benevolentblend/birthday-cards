@@ -1,13 +1,9 @@
-.card {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 10px;
+.wrapper {
     background: #dedede;
     width: 280px;
     height: 180px;
-    border-radius: var(--letter-rounded-border);
+    border-radius: 0.5em;
+    padding: 1em;
     transform: translate(0, 0);
     transition: all 0.5s ease;
-    padding: 1em;
 }
