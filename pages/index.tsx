@@ -1,13 +1,19 @@
-import { ReactNode } from "react";
-import Envelope from "../components/Envelope";
+import { useState } from "react";
 import EnvelopeStack from "../components/EnvelopeStack";
+import Envelope from "../models/Envelope";
 
 const numberOfCards = 50;
 
 export default function Home() {
-  const envelopes:ReactNode[] = Array.from(
+  const [envelopes] = useState<Envelope[]>(Array.from(
     Array(numberOfCards).keys(),
-  ).map((i) => (<Envelope key={i} isActive={false} />));
+  ).map((i) => ({
+    color: "red",
+    card: {
+      color: "white",
+      coverText: `Card ${i}`,
+    },
+  })));
 
   return (
     <div style={{

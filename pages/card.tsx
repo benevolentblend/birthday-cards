@@ -1,4 +1,4 @@
-import Card from "../components/Card";
+import GreetingCardView from "../components/GreetingCardView";
 
 export default function CardPage() {
   return (
@@ -8,10 +8,7 @@ export default function CardPage() {
       height: "100%",
     }}
     >
-      <Card>
-        This is the letter Content
-      </Card>
+      <GreetingCardView greetingCard={{ color: "red", coverText: "this is the content" }} />
     </div>
-
   );
 }

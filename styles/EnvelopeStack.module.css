@@ -11,7 +11,7 @@
     transition: .2s;
 }
 
-.item:hover {
+.scrollableList .item:hover, .itemActive {
     transform: translateY(-2rem);
 }
 
