@@ -15,10 +15,6 @@
     transform: translateY(-2rem);
 }
 
-.item:hover~.item {
-    transform: translateX(4rem);
-}
-
 .item:not(:first-child) {
     margin-left: -4rem;
 }

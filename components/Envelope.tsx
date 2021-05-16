@@ -1,12 +1,24 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import styles from "../styles/Envelope.module.css";
 
-const Envelope:FC = ({ children }) => {
-  const [isOpen, setOpen] = useState(false);
+interface Props {
+  isActive: boolean;
+}
+
+const Envelope:FC<Props> = ({ children, isActive }) => {
+  const [isOpen, setisOpen] = useState(false);
 
   const toggleOpen = () => {
-    setOpen(!isOpen);
+    if (isActive) {
+      setisOpen(!isOpen);
+    }
   };
+
+  useEffect(() => {
+    if (!isActive) {
+      setisOpen(false);
+    }
+  }, [isActive]);
 
   return (
     <div
