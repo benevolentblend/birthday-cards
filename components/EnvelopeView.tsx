@@ -12,7 +12,7 @@ const EnvelopeView:FC<Props> = ({ envelope, isOpen }) => (
   <div className={`${styles.wrapper} ${isOpen ? styles.mailOpen : ""}`}>
     <div className={styles.seal} />
     <div className={styles.contents}>
-      <GreetingCardView greetingCard={envelope.card} />
+      <GreetingCardView greetingCard={envelope.card} isOpen={false} />
     </div>
     <div className={styles.face} />
   </div>

@@ -2,10 +2,10 @@ import { useState } from "react";
 import GreetingCardView from "../components/GreetingCardView";
 
 export default function CardPage() {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleOpen = () => {
-    setOpen(!isOpen);
+  const toggleIsOpen = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -13,7 +13,11 @@ export default function CardPage() {
       style={{
         marginTop: "5em",
       }}
-      onClick={toggleOpen}
+      role="button"
+      onClick={toggleIsOpen}
+      onKeyDown={toggleIsOpen}
+      tabIndex={0}
+      aria-label="open"
     >
       <GreetingCardView greetingCard={{ color: "red", coverText: "this is the content" }} isOpen={isOpen} />
     </div>
