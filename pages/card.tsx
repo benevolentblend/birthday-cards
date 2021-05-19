@@ -19,7 +19,10 @@ export default function CardPage() {
       tabIndex={0}
       aria-label="open"
     >
-      <GreetingCardView greetingCard={{ color: "red", coverText: "this is the content" }} isOpen={isOpen} />
+      <GreetingCardView
+        greetingCard={{ color: "red", coverText: "Cover Text", insideText: "Inside Text" }}
+        isOpen={isOpen}
+      />
     </div>
   );
 }

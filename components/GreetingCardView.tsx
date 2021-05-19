@@ -9,10 +9,13 @@ interface Props {
 
 const GreetingCardView:FC<Props> = ({ greetingCard, isOpen }) => (
   <div className={`${styles.wrapper} ${isOpen ? styles.open : ""}`}>
-    <div className={styles.frontPage}>
-      <p>{greetingCard.coverText}</p>
+    <div className={`${styles.frontPage} ${styles.page}`}>
+      <h2>{greetingCard.coverText}</h2>
     </div>
-    <div className={styles.insidePage} />
+    <div className={`${styles.backPage} ${styles.page}`} />
+    <div className={`${styles.insidePage}  ${styles.page}`}>
+      <p>{greetingCard.insideText}</p>
+    </div>
   </div>
 );
 
