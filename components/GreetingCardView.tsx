@@ -1,5 +1,5 @@
 import {
-  FC, useCallback, useEffect, useRef,
+  FC, useCallback, useRef,
 } from "react";
 import { useSpring, animated } from "react-spring";
 import GreetingCard from "../models/GreetingCard";
@@ -20,7 +20,7 @@ const GreetingCardView:FC<Props> = ({ greetingCard, isActive, isOpen }) => {
     if (wrapperEle.current?.parentElement) {
       return wrapperEle.current.parentElement.getBoundingClientRect();
     }
-    return new DOMRect();
+    return { left: 0, top: 0 };
   }, [wrapperEle]);
 
   const { left } = getParentPositionBox();
@@ -42,10 +42,6 @@ const GreetingCardView:FC<Props> = ({ greetingCard, isActive, isOpen }) => {
       }
     },
   });
-
-  useEffect(() => {
-    console.log({ left, result: -(left + window.pageXOffset - windowOffset), screenX: window.pageXOffset });
-  }, [isActive]);
 
   return (
     <animated.div
@@ -71,7 +67,6 @@ const GreetingCardView:FC<Props> = ({ greetingCard, isActive, isOpen }) => {
           <p>{greetingCard.insideText}</p>
         </div>
       </div>
-
     </animated.div>
   );
 };
