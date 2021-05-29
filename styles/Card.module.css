@@ -17,6 +17,22 @@
     padding: 3em;
 }
 
+.close {
+    position: absolute;
+    top: 0;
+    right: -1em;
+    width: 1em;
+    height: 1em;
+    background: red;
+}
+
+.close::before {
+    content: 'x';
+    color: #fff;
+    font-weight: 300;
+    font-family: Arial, sans-serif;
+  }
+
 .frontPage {
     left: 27.5%;
 

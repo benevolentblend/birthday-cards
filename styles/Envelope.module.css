@@ -21,6 +21,7 @@
 
 .contents {
     position: absolute;
+    width: 100%;
     z-index: 3;
     top: 0;
     left: 10px;
