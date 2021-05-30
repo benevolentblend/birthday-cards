@@ -11,7 +11,8 @@ interface Props {
   isOpen: boolean;
 }
 
-const windowOffset = 100;
+const windowXMargin = 100;
+const windowYMargin = 100;
 
 const GreetingCardView:FC<Props> = ({ greetingCard, isActive, isOpen }) => {
   const wrapperEle = useRef<HTMLDivElement>(null);
@@ -23,21 +24,34 @@ const GreetingCardView:FC<Props> = ({ greetingCard, isActive, isOpen }) => {
     return { left: 0, top: 0 };
   }, [wrapperEle]);
 
-  const { left } = getParentPositionBox();
+  const { left, top } = getParentPositionBox();
 
-  const animatedProps = useSpring({
-    from: { left: 0, top: 0, transform: "rotate(0deg)" },
+  const animatedStyles = useSpring({
+    from: {
+      left: 0,
+      top: 0,
+      transform: "rotate(90deg)",
+      width: "300px",
+      height: "200px",
+    },
     to: async (next) => {
       if (isActive) {
         await new Promise((resolve) => setTimeout(resolve, 500));
         await next({ top: -200, duraction: 250 });
         await next({
-          left: -(left + window.pageXOffset - windowOffset),
-          transform: "rotateZ(90deg)",
+          left: -(left + window.pageXOffset - windowXMargin),
+          top: -(top + window.pageYOffset - windowYMargin),
+          transform: "rotateZ(0deg)",
           duraction: 250,
+          width: `${(window.innerWidth - windowXMargin * 2)}px`,
         });
       } else {
-        await next({ left: 0, duraction: 200, transform: "rotate(0deg)" });
+        await next({
+          left: 0,
+          duraction: 200,
+          transform: "rotate(90deg)",
+          width: "300px",
+        });
         await next({ top: 0, duraction: 200 });
       }
     },
@@ -47,10 +61,8 @@ const GreetingCardView:FC<Props> = ({ greetingCard, isActive, isOpen }) => {
     <animated.div
       ref={wrapperEle}
       style={{
-        left: animatedProps.left,
-        top: animatedProps.top,
+        ...animatedStyles,
         position: "absolute",
-        transform: animatedProps.transform,
       }}
     >
       <div className={`${styles.wrapper} ${isOpen ? styles.open : ""}`}>
